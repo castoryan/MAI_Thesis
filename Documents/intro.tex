@@ -3,11 +3,21 @@
 SLAM is also called Structure of Motion.
 
 \section{Simultaneous localization and mapping}
+Simultaneous localization and mapping(SLAM) aims to give a robot an ability of knowing where it is according to the map built by itself, in an unknown environment. Since last twenty years, variety of forms have been built to formulate and solve this problem.
+
+Nowaday, most of SLAM systems are formulated in Bayesian form. Unfortunately, the Bayesian form SLAM is not intractable in general, approximation solutions are needed. Two main stream solutions of Bayesian SLAM will be introduced as follow: Linearised Gaussian systems, including extended kalman filter (EKF), (UKF), (EIF), (SAM), and Monte-carlo sampling, such as Rao-Blackwellized particle filters (Fast SLAM). 
+
+However, with the rapid development of computing capacity, graph-based formulation SLAM receives more and more attention during in recent years. Graph-based SLAM was firstly introduced by Lu and Milios in 1997[]
+
+
+
 \subsubsection{Filter Based SLAM}
 Extended Kalman Filter(EKF), Particle Filer.
  
 \subsubsection{Graph SLAM}
 The main works of Graph SLAM are iSAM and g2o.
+
+\subsubsection{Problem of data association}
 
 \section{Mono SLAM}
 Andrew Davision\rq{}s Mono SLAM, and  Klein\rq{}s PTAM.
@@ -28,4 +38,6 @@ Andrew Davision\rq{}s Mono SLAM, and  Klein\rq{}s PTAM.
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "thesis"
-%%% End: 
+%%% End:
+%%%  
+%%%http://www.acfr.usyd.edu.au/pdfs/projects/SLAM%20Summer%20School/Tim%20Bailey.pdf
