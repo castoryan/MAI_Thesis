@@ -5,19 +5,59 @@ SLAM is also called Structure of Motion.
 \section{Simultaneous localization and mapping}
 Simultaneous localization and mapping(SLAM) aims to give a robot an ability of knowing where it is according to the map built by itself, in an unknown environment. Since last twenty years, variety of forms have been built to formulate and solve this problem.
 
-Nowaday, most of SLAM systems are formulated in Bayesian form. Unfortunately, the Bayesian form SLAM is not intractable in general, approximation solutions are needed. Two main stream solutions of Bayesian SLAM will be introduced as follow: Linearised Gaussian systems, including extended kalman filter (EKF), (UKF), (EIF), (SAM), and Monte-carlo sampling, such as Rao-Blackwellized particle filters (Fast SLAM). 
+Nowaday, most of SLAM systems are formulated in Probabilistic form. Unfortunately, the Bayesian form SLAM is not intractable in general, approximation solutions are needed. Two main stream solutions of Bayesian SLAM will be introduced as follow[1]: Linearised Gaussian systems, including extended kalman filter (EKF), (UKF), (EIF), (SAM), and Monte-carlo sampling, such as Rao-Blackwellized particle filters (Fast SLAM). 
 
-However, with the rapid development of computing capacity, graph-based formulation SLAM receives more and more attention during in recent years. Graph-based SLAM was firstly introduced by Lu and Milios in 1997[]
+However, with the rapid development of computing capacity, graph-based formulation SLAM receives more and more attention during in recent years. Graph-based SLAM was firstly introduced by Lu and Milios in 1997[2], but the high complexity of error minimization problem limit its implementation on the real robots. The efficient solution of graph relying on sparse linear algebra, makes this technique become the  state of art not only with respect to speed and accuracy.
 
 
 
-\subsubsection{Filter Based SLAM}
-Extended Kalman Filter(EKF), Particle Filer.
+\subsubsection{Probabilistic SLAM}
+Extended Kalman Filter(EKF), (UKF), (EIF), (SAM) 
+
+Particle Filer.
  
-\subsubsection{Graph SLAM}
+\subsubsection{Graph-based SLAM}
 The main works of Graph SLAM are iSAM and g2o.
 
 \subsubsection{Problem of data association}
+Associating uncertain observations to known track is the purpose of data association. The reasons make data association so difficult are listed as follow:
+	The creation, maintenance and deletion of track.
+	Uncertain number of targets and sensors.
+	Occlusions between targets.
+	False alarm.
+	Imperfect target detection.
+
+Normally, we associate data in two approaches: Bayesian and Non-Bayesian, which we will discuss more in detail in the following sections.
+
+The standard procedure of data association is:
+	1, make the observations, the measurement can be either raw data from sensor, or output of target detector.
+	2, predict the measurements fro the predict track.
+	3, check if a measurement lies in the gate. If yes, attribute it into a valid candidate for a match.
+	
+	In 2006, Arturo Gil and etc[3] define a new measurement of distance between data pairs, which was Mahalanobis distance. Instead of using Euclidian distance, which only took position information into account, Mahalanobis distance can also fuse the information of uncertainty and correlations between two data.
+	
+Single Target Data Association
+	Nearest neighbor Standard filter(NNSF)
+	Probabilistic Data Association Filter(PDAF)
+
+Multiple Target Data Association
+	Nearest neighbor Standard filter(NNSF)
+	Global Nearest neighbor Standard filter(JNNSF)
+	
+	Joint Probabilistic Data Association Filter(JPDAF)
+	Multi-hypothesis tracking(MHT)
+	Markov Chain Monte Carlo(MCMC)
+
+	
+	
+Batch gating
+	joint compatibility branch and bound(JCBB), tree search
+	combined constraint data association with no knowledge of vehicle pose.
+
+Appearance signatures
+
+multi-hypothesis data association
+
 
 \section{Mono SLAM}
 Andrew Davision\rq{}s Mono SLAM, and  Klein\rq{}s PTAM.
@@ -40,4 +80,8 @@ Andrew Davision\rq{}s Mono SLAM, and  Klein\rq{}s PTAM.
 %%% TeX-master: "thesis"
 %%% End:
 %%%  
-%%%http://www.acfr.usyd.edu.au/pdfs/projects/SLAM%20Summer%20School/Tim%20Bailey.pdf
+%%%[1]http://www.acfr.usyd.edu.au/pdfs/projects/SLAM%20Summer%20School/Tim%20Bailey.pdf
+%%%[2] F. Lu and E. Milios. Globally consistent range scan alignment for environment mapping. Autonomous Robots, 4:333–349, 1997.
+%%%[3]Improving Data Association in Vision-based SLAM 
+%%%
+%%%
